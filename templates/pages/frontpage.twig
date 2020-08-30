@@ -1,0 +1,17 @@
+{% extends "master.twig" %}
+
+{% block content %}
+    <header class="{{ post.thumbnail.src('xlarge') is empty ? "no-background-image" }}" style="padding-top: {{post.headerheight}}vh; background-position: {{post.headerimageorientation}}; background-image: url('{{ post.thumbnail.src('xlarge') }}')">
+        <div class="uk-container">
+            <div class="caption">
+                
+                <h1 class="ctx-font-script uk-margin-remove">{{post.title}}</h1>
+                <h3 class="uk-margin-remove">{{post.subtitle}}</h3>
+                {%if post.headerurl %}<a target="{{post.headerurl.target}}" href="{{ post.headerurl.url }}" class=" uk-button uk-button-primary-dark uk-button-large ctx-icon ctx-icon-arrow-forward">{{ post.headerurl.title }}</a>{% endif %}
+            </div>
+        </div>
+    </header>
+    <article>
+        {{ post.content }}
+    </article>
+{% endblock %}
